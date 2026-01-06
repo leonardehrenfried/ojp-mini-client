@@ -71,10 +71,26 @@ function App() {
     const newRelativePathQuery = window.location.pathname + (params.toString() ? '?' + params.toString() : '');
     window.history.replaceState(null, '', newRelativePathQuery);
   }, [formData]);
+  const getLocalISOString = (date: Date) => {
+    const tzo = -date.getTimezoneOffset();
+    const dif = tzo >= 0 ? '+' : '-';
+    const pad = (num: number) => num.toString().padStart(2, '0');
+    const msPad = (num: number) => num.toString().padStart(3, '0');
+    return date.getFullYear() +
+      '-' + pad(date.getMonth() + 1) +
+      '-' + pad(date.getDate()) +
+      'T' + pad(date.getHours()) +
+      ':' + pad(date.getMinutes()) +
+      ':' + pad(date.getSeconds()) +
+      '.' + msPad(date.getMilliseconds()) +
+      dif + pad(Math.floor(Math.abs(tzo) / 60)) +
+      ':' + pad(Math.abs(tzo) % 60);
+  };
+
   const [xmlDoc, setXmlDoc] = useState('');
   const [response, setResponse] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
-  const [currentTimestamp, setCurrentTimestamp] = useState(new Date().toISOString());
+  const [currentTimestamp, setCurrentTimestamp] = useState(getLocalISOString(new Date()));
 
   useEffect(() => {
     setXmlDoc(XML_TEMPLATE(formData, currentTimestamp));
@@ -114,7 +130,7 @@ function App() {
   const handleSend = async () => {
     setLoading(true);
     setResponse(null);
-    const now = new Date().toISOString();
+    const now = getLocalISOString(new Date());
     setCurrentTimestamp(now);
     const currentXml = XML_TEMPLATE(formData, now);
     try {
@@ -138,7 +154,7 @@ function App() {
     <main className="container">
       <div className="app-container">
         <section className="left-pane">
-        <h2>Request parameters</h2>
+        <h2><code>TripRequest</code> parameters</h2>
         {CONFIG.map((item) => (
           <div key={item.id}>
             <label htmlFor={item.id}>
