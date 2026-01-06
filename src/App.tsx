@@ -19,12 +19,10 @@ const XML_TEMPLATE = (values: Record<string, string>, timestamp: string) => `
     <siri:ServiceRequest>
       <siri:RequestTimestamp>${timestamp}</siri:RequestTimestamp>
       <siri:RequestorRef>OpenTripPlanner</siri:RequestorRef>
-      <siri:MessageIdentifier>abc</siri:MessageIdentifier>
       <OJPTripRequest>
-        <siri:RequestTimestamp>${timestamp}</siri:RequestTimestamp>
         <Origin>
           <PlaceRef>
-            <StopPlaceRef>${values.originStopPlaceRef || 'tampere:4091'}</StopPlaceRef>
+            <StopPlaceRef>${values.originStopPlaceRef || 'Stop1'}</StopPlaceRef>
             <Name>
               <Text>unused</Text>
             </Name>
@@ -33,7 +31,7 @@ const XML_TEMPLATE = (values: Record<string, string>, timestamp: string) => `
         </Origin>
         <Destination>
           <PlaceRef>
-            <StopPlaceRef>${values.destinationStopPlaceRef || 'U3xBPTFATz1IYW5ub3ZlciBIYXVwdGJhaG5ob2ZAWD05NzQxMDcxQFk9NTIzNzY0OTRAVT04NkBMPTEwMzU0ODUwQEI9MUBwPTE2ODY3MzE0MThAfEhhbm5vdmVyIEhhdXB0YmFobmhvZnw5Ljc0MTA3MXw1Mi4zNzY0OTR8ZmFsc2U-'}</StopPlaceRef>
+            <StopPlaceRef>${values.destinationStopPlaceRef || 'Stop2'}</StopPlaceRef>
             <Name>
               <Text>unused</Text>
             </Name>
