@@ -132,7 +132,7 @@ function App() {
     setCurrentTimestamp(now);
     const currentXml = XML_TEMPLATE(formData, now);
     try {
-      const res = await fetch('http://localhost:8080/otp/ojp/v2', {
+      const res = await fetch('/otp/ojp/v2', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/xml',
