@@ -8,9 +8,9 @@ interface ConfigItem {
 }
 
 const CONFIG: ConfigItem[] = [
-  { id: 'originStopPlaceRef', label: 'Origin StopPlaceRef', placeholder: 'Enter Origin StopPlaceRef' },
-  { id: 'destinationStopPlaceRef', label: 'Destination StopPlaceRef', placeholder: 'Enter Destination StopPlaceRef' },
-  { id: 'depArrTime', label: 'Departure/Arrival Time', placeholder: 'e.g. 2023-06-22T12:00:00.000+02:00 (defaults to now)' },
+  { id: 'originStopPlaceRef', label: 'Origin stop ref', placeholder: 'Enter Origin StopPlaceRef' },
+  { id: 'destinationStopPlaceRef', label: 'Destination stop ref', placeholder: 'Enter Destination StopPlaceRef' },
+  { id: 'depArrTime', label: 'Departure time', placeholder: 'e.g. 2023-06-22T12:00:00.000+02:00 (defaults to now)' },
 ];
 
 const XML_TEMPLATE = (values: Record<string, string>, timestamp: string) => `
